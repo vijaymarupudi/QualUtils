@@ -16,20 +16,70 @@
     <p><a id="experiment-link">Click here</a> to start the experiment.</p>
     ```
 
-- [Paste](https://www.qualtrics.com/support/survey-platform/survey-module/question-options/add-javascript/)
-  the library Javascript to the question (after clearing the default
-  Javascript). After pasting library Javascript, call the library function
-  `questionInitiate`. It follows this signature.
+- [Add](https://www.qualtrics.com/support/survey-platform/survey-module/question-options/add-javascript/)
+  Javascript to the question. After clearing the default JavaScript. Paste the
+  following and edit the parameters of the `questionInitiate` function. The
+  code below loads the library into Qualtrics.
 
+    ```javascript
+    let script = document.createElement('script');
+    script.onload = function () {
+        // read along for what to put here...
+    };
+    script.src = "https://cdn.jsdelivr.net/gh/vijaygopal1234/QualUtils@0.1.2/dist/QualUtils-0.1.2.js";
+    document.head.appendChild(script);
     ```
+
+    Call the `QualUtils.questionInitiate` function in the onload function. The
+    `embeddedDataName` should match the name you created in the first step. The
+    `experimentUrl` should be the externally hosted url of your experiment. The
+    `configuration` parameter is sent to the external experiment.
+
+    ```javascript
     QualUtils.questionInitiate(embeddedDataName: String, experimentUrl: String, configuration: <Any Javascript Object>)
     ```
 
-    Feel free to use your own values.
+    For example, you can send the parameters for a n-back using the
+    configuration parameter by sending the object `{ n: 4 }` for a 4-back. How
+    you use this is up to you!
 
-It is recommended that you type your code in a text editor and then paste the output into the Qualtrics Javascript panel.
+    This code snippet disables the next button until the participant finishes the experiment.
 
-- Given that you've configured your external experiment properly. This should work!
+- On the client side, you can use the library like this! `QualUtils.startExperiment` is a Promise that returns the configuration from Qualtrics. `QualUtils.sendData` sends data back to Qualtrics.
+
+    ```javascript
+    let script = document.createElement('script');
+    script.onload = async function () {
+        let configuration = await QualUtils.startExperiment()
+        // do something with configuration
+
+        // jsPsych.init({...})
+        
+        // sample data
+        let data = { time: new Date().valueOf(), configuration: configuration }
+        QualUtils.sendData(data)
+        window.close()
+        // the data is now in Qualtrics
+    };
+    script.src = "https://cdn.jsdelivr.net/gh/vijaygopal1234/QualUtils@0.1.2/dist/QualUtils-0.1.2.js";
+    document.head.appendChild(script);
+    ```
+
+- The next button in the other tab has now been enabled!
+
+## Advanced users
+
+`QualUtils` is a UMD module. You can use it like this.
+
+```javascript
+import QualUtils from "./path-to-QualUtils.js"
+```
+
+or 
+
+```javascript
+const QualUtils = require("./path-to-QualUtils.js")
+```
 
 ## Internal mechanism
 
