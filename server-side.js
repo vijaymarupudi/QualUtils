@@ -51,7 +51,7 @@ export async function questionInitiate(qual, embeddedDataName, experimentUrl, co
     // Respond to ready signal by sending configuration
     await checkReady();
     state.experimentWindow.postMessage(
-      { type: "configuration", configuration: configuration },
+      { type: "configuration", payload: configuration },
       "*"
     );
 
