@@ -1,5 +1,7 @@
 # QualUtils: Qualtrics online experiment utilities
 
+Helpers to configure online experiments from Qualtrics and for Qualtrics to store external experiment data.
+
 ## How to use
 
 - [Set an embedded data field for each external page study you wish to
