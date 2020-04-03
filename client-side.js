@@ -23,3 +23,7 @@ export function startExperiment() {
     window.addEventListener("message", listener);
   });
 }
+
+export function isFromQualtrics() {
+  return !!window.opener;
+}

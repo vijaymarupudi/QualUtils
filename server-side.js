@@ -34,9 +34,7 @@ function receiveData() {
   });
 }
 
-export function questionInitiate(embeddedDataName, experimentUrl, configuration) {
-  Qualtrics.SurveyEngine.addOnload(async function() {
-    const qual = this;
+export async function questionInitiate(qual, embeddedDataName, experimentUrl, configuration) {
 
     // Prevent participant from proceeding next.
     qual.disableNextButton();
@@ -63,5 +61,4 @@ export function questionInitiate(embeddedDataName, experimentUrl, configuration)
     Qualtrics.SurveyEngine.setEmbeddedData(embeddedDataName, dataToBeSaved);
     qual.enableNextButton();
     qual.clickNextButton();
-  });
 }
