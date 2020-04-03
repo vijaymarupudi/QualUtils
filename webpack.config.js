@@ -1,11 +1,13 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+const packagejson = require("./package.json")
+
 const libraryConfig = {
   mode: "development",
   entry: "./index.js",
   devtool: "source-map",
   output: {
-    filename: "QualUtils.js",
+    filename: `QualUtils-${packagejson.version}.js`,
     library: "QualUtils",
     libraryTarget: "umd"
   },
