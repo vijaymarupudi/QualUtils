@@ -34,7 +34,7 @@ Helpers to configure online experiments from Qualtrics and for Qualtrics to stor
         // runs after library loads
         // read along for what to put here...
       };
-      script.src = "https://cdn.jsdelivr.net/gh/vijaygopal1234/QualUtils@0.1.3/dist/QualUtils-0.1.3.js";
+      script.src = "https://cdn.jsdelivr.net/gh/vijaygopal1234/QualUtils@0.1.4/dist/QualUtils-0.1.4.js";
       document.head.appendChild(script);
     });
     ```
@@ -68,7 +68,7 @@ Helpers to configure online experiments from Qualtrics and for Qualtrics to stor
             { n: 4 }
           );
       };
-      script.src = "https://cdn.jsdelivr.net/gh/vijaygopal1234/QualUtils@0.1.3/dist/QualUtils-0.1.3.js";
+      script.src = "https://cdn.jsdelivr.net/gh/vijaygopal1234/QualUtils@0.1.4/dist/QualUtils-0.1.4.js";
       document.head.appendChild(script);
     });
     ```
@@ -91,7 +91,7 @@ Helpers to configure online experiments from Qualtrics and for Qualtrics to stor
         window.close()
         // the data is now in Qualtrics
     };
-    script.src = "https://cdn.jsdelivr.net/gh/vijaygopal1234/QualUtils@0.1.3/dist/QualUtils-0.1.3.js";
+    script.src = "https://cdn.jsdelivr.net/gh/vijaygopal1234/QualUtils@0.1.4/dist/QualUtils-0.1.4.js";
     document.head.appendChild(script);
     ```
 
@@ -115,7 +115,7 @@ Helpers to configure online experiments from Qualtrics and for Qualtrics to stor
           }
         })
     };
-    script.src = "https://cdn.jsdelivr.net/gh/vijaygopal1234/QualUtils@0.1.3/dist/QualUtils-0.1.3.js";
+    script.src = "https://cdn.jsdelivr.net/gh/vijaygopal1234/QualUtils@0.1.4/dist/QualUtils-0.1.4.js";
     document.head.appendChild(script);
     ```
 
