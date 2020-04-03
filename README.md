@@ -85,6 +85,11 @@ const QualUtils = require("./path-to-QualUtils.js")
 
 ## Internal mechanism
 
+Qualtrics and the experiment page communicate using the
+[`window.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)
+and the [`window.addEventListener('message' ...)`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage#The_dispatched_event)
+APIs.
+
 - First, the page that the person has opened sends a message `{ type: 'statusSignal', payload: 'ready' }`
 
 - Then, Qualtrics sends the page the configuration information `{ type: 'configuration', payload: ... }`
