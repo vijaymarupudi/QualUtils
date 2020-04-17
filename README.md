@@ -34,7 +34,7 @@ Helpers to configure online experiments from Qualtrics and for Qualtrics to stor
         // runs after library loads
         // read along for what to put here...
       };
-      script.src = "https://cdn.jsdelivr.net/gh/vijaygopal1234/QualUtils@0.1.5/dist/QualUtils-0.1.5.js";
+      script.src = "https://cdn.jsdelivr.net/gh/vijaygopal1234/QualUtils@0.1.6/dist/QualUtils-0.1.6.js";
       document.head.appendChild(script);
     });
     ```
@@ -68,7 +68,7 @@ Helpers to configure online experiments from Qualtrics and for Qualtrics to stor
             { n: 4 }
           );
       };
-      script.src = "https://cdn.jsdelivr.net/gh/vijaygopal1234/QualUtils@0.1.5/dist/QualUtils-0.1.5.js";
+      script.src = "https://cdn.jsdelivr.net/gh/vijaygopal1234/QualUtils@0.1.6/dist/QualUtils-0.1.6.js";
       document.head.appendChild(script);
     });
     ```
@@ -91,7 +91,7 @@ Helpers to configure online experiments from Qualtrics and for Qualtrics to stor
         window.close()
         // the data is now in Qualtrics
     };
-    script.src = "https://cdn.jsdelivr.net/gh/vijaygopal1234/QualUtils@0.1.5/dist/QualUtils-0.1.5.js";
+    script.src = "https://cdn.jsdelivr.net/gh/vijaygopal1234/QualUtils@0.1.6/dist/QualUtils-0.1.6.js";
     document.head.appendChild(script);
     ```
 
@@ -115,7 +115,7 @@ Helpers to configure online experiments from Qualtrics and for Qualtrics to stor
           }
         })
     };
-    script.src = "https://cdn.jsdelivr.net/gh/vijaygopal1234/QualUtils@0.1.5/dist/QualUtils-0.1.5.js";
+    script.src = "https://cdn.jsdelivr.net/gh/vijaygopal1234/QualUtils@0.1.6/dist/QualUtils-0.1.6.js";
     document.head.appendChild(script);
     ```
 
@@ -157,3 +157,10 @@ APIs.
 - The experiment then deals with the configuration and does its thing.
 
 - After the experiment, it sends a message `{ type: 'studyData', ... }`
+
+## Deployment instructions
+
+* Change version numbers in package.json and README.md.
+* Run npx webpack -p.
+* Push tagged commit
+

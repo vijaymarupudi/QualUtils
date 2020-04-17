@@ -1,6 +1,6 @@
 {
   "name": "QualUtils",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A library to complete experimental tasks within Qualtrics",
   "main": "index.js",
   "dependencies": {
