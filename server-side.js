@@ -34,31 +34,40 @@ function receiveData() {
   });
 }
 
-export async function questionInitiate(qual, embeddedDataName, experimentUrl, configuration) {
+export async function questionInitiate(
+  qual,
+  embeddedDataName,
+  experimentUrl,
+  configuration
+) {
+  // Prevent participant from proceeding next.
+  qual.disableNextButton();
 
-    // Prevent participant from proceeding next.
-    qual.disableNextButton();
+  // find experiment link
+  const link = document.querySelector("a#experiment-link");
+  // make it look clickable
+  link.setAttribute("href", "#");
+  // handle click
+  link.addEventListener("click", () => {
+    state.experimentWindow = window.open(experimentUrl, "ExperimentWindow");
+  });
 
-    // find experiment link
-    const link = document.querySelector("a#experiment-link");
-    // make it look clickable
-    link.setAttribute("href", "#");
-    // handle click
-    link.addEventListener("click", () => {
-      state.experimentWindow = window.open(experimentUrl, "ExperimentWindow");
-    });
+  // Respond to ready signal by sending configuration
+  await checkReady();
+  state.experimentWindow.postMessage(
+    { type: "configuration", payload: configuration },
+    "*"
+  );
 
-    // Respond to ready signal by sending configuration
-    await checkReady();
-    state.experimentWindow.postMessage(
-      { type: "configuration", payload: configuration },
-      "*"
-    );
+  // Set data
+  const data = await receiveData();
+  const dataToBeSaved = JSON.stringify(data);
+  Qualtrics.SurveyEngine.setEmbeddedData(embeddedDataName, dataToBeSaved);
 
-    // Set data
-    const data = await receiveData();
-    const dataToBeSaved = JSON.stringify(data);
-    Qualtrics.SurveyEngine.setEmbeddedData(embeddedDataName, dataToBeSaved);
+  // to prevent bug where data is not fully uploaded
+  setTimeout(() => {
     qual.enableNextButton();
     qual.clickNextButton();
+  }, 4000);
+
 }
